@@ -1,11 +1,9 @@
-import { useState } from "react";
-import viteLogo from "/vite.svg";
-import "./App.css";
-
+import React from "react";
+import Home from "./pages/Home/Home.jsx";
 function App() {
   return (
     <>
-      <h1>Hey Iam Sivapriya</h1>
+      <Home />
     </>
   );
 }
