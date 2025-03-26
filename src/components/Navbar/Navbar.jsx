@@ -26,7 +26,7 @@ function Navbar() {
         <img src={bell_icon} alt="search icon" className="icons" />
         <div className="navbar-profile">
           <img src={profile_icon} alt="" className="profile" />
-          <img src={caret_icon} alt="" className="profile" />
+          <img src={caret_icon} alt="" className="" />
         </div>
       </div>
     </div>
