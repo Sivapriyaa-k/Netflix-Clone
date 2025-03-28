@@ -34,11 +34,10 @@ function Home() {
         </div>
       </div>
       <div className="more-cards">
-        <TitleCards />
-        <TitleCards />
-        <TitleCards />
-        <TitleCards />
-        <TitleCards />
+        <TitleCards title={"Blockbuster Movies"} />
+        <TitleCards title={"Blockbuster Movies"} />
+        <TitleCards title={"Blockbuster Movies"} />
+        <TitleCards title={"Blockbuster Movies"} />
       </div>
     </div>
   );
