@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 const firebaseConfig = {
     apiKey: "AIzaSyAwIHRKEQ_K7RlLbctlHfuLADNKQIMNpcs",
     authDomain: "netflix-clone-ff54d.firebaseapp.com",
@@ -20,7 +20,14 @@ const signup = async (name, email, password) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
         const user = res.user;
+        await addDoc(collection(db, "user"), {
+            uid: user.uid,
+            name,
+            authProvider: "local",
+            email,
+        })
     } catch (error) {
-
+        console.log(error);
+        alert(error);
     }
 }
