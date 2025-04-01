@@ -2,20 +2,29 @@ import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/logo.png";
 import { login, signup } from "../../firebase";
+import netflix_spinner from "../../assets/netflix_spinner.gif";
+
 function Login() {
   const [signState, setSignState] = useState("Sign In");
   const [name, setName] = useState("");
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
-
-  const user_auth = async () => {
+  const [loading, setLoading] = useState(false);
+  const user_auth = async (e) => {
+    e.preventDefault();
+    setLoading(true);
     if (signState === "Sign In") {
       await login(email, password);
     } else {
-      await signUp(name, email, password);
+      await signup(name, email, password);
     }
+    setLoading(false);
   };
-  return (
+  return loading ? (
+    <div className="login-spinner">
+      <img src={netflix_spinner} alt="" />
+    </div>
+  ) : (
     <div className="login">
       <img src={logo} alt="" className="login-logo" />
       <div className="login-form">
@@ -25,7 +34,7 @@ function Login() {
             <input
               value={name}
               onChange={(e) => {
-                e.target.value;
+                setName(e.target.value);
               }}
               type="text"
               placeholder="Your Name"
@@ -37,7 +46,7 @@ function Login() {
           <input
             value={email}
             onChange={(e) => {
-              e.target.value;
+              setemail(e.target.value);
             }}
             type="email"
             placeholder="Email"
@@ -45,7 +54,7 @@ function Login() {
           <input
             value={password}
             onChange={(e) => {
-              e.target.value;
+              setPassword(e.target.value);
             }}
             type="password"
             placeholder="Password"
