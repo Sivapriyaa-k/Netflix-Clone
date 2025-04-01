@@ -24,3 +24,10 @@
   justify-content: center;
   width: 90%;
 }
+
+@media (max-width: 500px) {
+  .player-info p {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+}
